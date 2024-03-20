@@ -34,7 +34,6 @@ jobs:
 
 
       - name: Build with Gradle
-        working-directory: ./core/standalone
         run: ./gradlew :core:standalone:build
 
       - name: SCP jar file
@@ -43,7 +42,7 @@ jobs:
           username: ec2-user
           host: ${{ secrets.EC2_HOST }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "./core/standalone/bin/*.jar"
+          source: ./core/standalone/bin/*.jar
           target: ~/openwhisk/core/standalone/bin
           strip_components: 2
           
