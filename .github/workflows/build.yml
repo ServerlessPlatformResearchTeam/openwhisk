@@ -32,16 +32,19 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+
       - name: Build with Gradle
+        working-directory: ./core/standalone
         run: ./gradlew :core:standalone:build
 
       - name: SCP jar file
         uses: appleboy/scp-action@master
+        working-directory: ./core/standalone
         with:
           username: ec2-user
           host: ${{ secrets.EC2_HOST }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "./core/standalone/bin/*.jar"
+          source: "./bin/*.jar"
           target: ~/openwhisk/core/standalone/bin
           strip_components: 2
           
