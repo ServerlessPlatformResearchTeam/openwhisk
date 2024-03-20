@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  build and deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -41,7 +41,7 @@ jobs:
           username: ec2-user
           host: ${{ secrets.EC2_HOST }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "./bin/*.jar"
-          target: ~/openwhisk/bin
+          source: "./core/standalone/bin/*.jar"
+          target: ~/openwhisk/core/standalone/bin
           strip_components: 2
           
