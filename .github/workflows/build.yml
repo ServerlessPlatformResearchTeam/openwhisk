@@ -38,13 +38,12 @@ jobs:
         run: ./gradlew :core:standalone:build
 
       - name: SCP jar file
-        working-directory: ./core/standalone
         uses: appleboy/scp-action@master
         with:
           username: ec2-user
           host: ${{ secrets.EC2_HOST }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "./bin/*.jar"
+          source: "./core/standalone/bin/*.jar"
           target: ~/openwhisk/core/standalone/bin
           strip_components: 2
           
