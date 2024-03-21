@@ -42,7 +42,7 @@ jobs:
           username: ec2-user
           host: ${{ secrets.EC2_HOST }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: ./bin/openwhisk-standalone.jar
-          target: ~/bin
+          source: "./bin/openwhisk-standalone.jar"
+          target: ~/openwhisk/bin
           strip_components: 1
           
