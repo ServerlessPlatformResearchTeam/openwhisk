@@ -36,6 +36,11 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew :core:standalone:build
 
+      - name: ls core
+        run: ./core/standalone/bin && ls -all
+      - name: ls
+        run : ./bin && ls -all
+
       - name: SCP jar file
         uses: appleboy/scp-action@master
         with:
